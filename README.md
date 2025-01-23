@@ -49,7 +49,7 @@ Before running the application, ensure you have the following installed:
 
    Once the services are up and running, you can access the backend API at http://localhost:8000.
 
-You can use the endpoint collections available in the repository's endpoint_collections section for interaction.
+You can use the endpoint collections available in the repository's problem_specific_docs/RedisAssignment.postman_collection.json file section for interaction.
 The API will allow you to upload document, search for relevant documents, and interact with the vector store.
 
 ## API Endpoints
@@ -59,7 +59,6 @@ The API will allow you to upload document, search for relevant documents, and in
 2. **Search**: Search the Redis vector store for relevant documents based on a query.
 
 
-Refer to the endpoint_collections section for further details on available endpoints.( There's one more API to clear the content of redis store, but that's related to this assignment, so I'm not sharing that in the collection file)
 ## Troubleshooting
 Ensure that the Redis Stack container is running properly.
 If you encounter issues with the OpenAI API, check that you have correctly set your OPENAI_API_KEY.
