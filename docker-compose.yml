@@ -1,0 +1,38 @@
+version: '3.8'
+
+services:
+  redis:
+    image: redis/redis-stack-server:latest
+    container_name: redis-stack
+    ports:
+      - "6379:6379"
+      - "8001:8001"  # Redis-Stack UI port
+    networks:
+      - backend-network
+    restart: always
+
+  backend:
+    image: python:3.9-slim  # Directly use a Python image
+    container_name: backend
+    ports:
+      - "8000:8000"
+    working_dir: /app
+    volumes:
+      - .:/app  # Mount the current directory to the container's /app directory
+    environment:
+      - REDIS_HOST=redis
+      - REDIS_PORT=6379
+    networks:
+      - backend-network
+    depends_on:
+      - redis
+    command: >
+      sh -c "
+        pip install --no-cache-dir -r /app/requirements.txt &&
+        uvicorn app.main:app --host 0.0.0.0 --port 8000
+      "
+    restart: always
+
+networks:
+  backend-network:
+    driver: bridge
