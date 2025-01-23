@@ -1,0 +1,74 @@
+{
+	"info": {
+		"_postman_id": "bdcfdf0e-ca19-4fea-af95-a09a562d3eca",
+		"name": "RedisAssignment",
+		"schema": "https://schema.getpostman.com/json/collection/v2.0.0/collection.json",
+		"_exporter_id": "16106282"
+	},
+	"item": [
+		{
+			"name": "upload_endpoint",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "formdata",
+					"formdata": [
+						{
+							"key": "file",
+							"type": "file",
+							"src": "/C:/Users/KeesaramRupesh/Downloads/NBEATS paper.pdf"
+						},
+						{
+							"key": "",
+							"value": "",
+							"type": "text",
+							"disabled": true
+						}
+					]
+				},
+				"url": {
+					"raw": "http://127.0.0.1:8000/api/v1/upload?index_name=redis_index",
+					"protocol": "http",
+					"host": [
+						"127",
+						"0",
+						"0",
+						"1"
+					],
+					"port": "8000",
+					"path": [
+						"api",
+						"v1",
+						"upload"
+					],
+					"query": [
+						{
+							"key": "index_name",
+							"value": "redis_index"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "query_endpoint",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"query\":\"Explain me about time series forecasting\",\r\n    \"index_name\":\"redis_index\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": "http://127.0.0.1:8000/api/v1/search"
+			},
+			"response": []
+		}
+	]
+}
